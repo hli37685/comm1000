@@ -1,0 +1,32 @@
+<div class='nav_item'>
+    <%= link_to 'New Slot', new_slot_path, class: 'btn btn-success btn-small' %>
+  </div>
+
+   <h1>Listing slots</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>list_order</th>
+      <th>assigned</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @slots.each do |slot| %>
+      <tr>
+        <td><%= slot.description %></td>
+        <td><%= slot.list_order %></td>
+        <td><%= slot.assigned %></td>
+        <td><%= link_to 'Edit', edit_slot_path(slot) %></td>
+         
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Slot', new_slot_path %>

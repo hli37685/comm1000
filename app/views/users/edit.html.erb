@@ -1,0 +1,21 @@
+<%= render 'shared/content_title', title: "Complete Workshop Reservation" %>
+
+<div class='well'>
+  <%= form_for @user do |f| %>
+  <%= render 'shared/errors', obj: @user %>
+
+
+<%=  f.label "Select a Day and Time" %>    
+    <%= f.select("slot_id", Slot.all.collect {|s| [ s.description, s.id ] }) %>
+    <br /><br />
+
+<%=  f.label "Select your instructor" %>    
+    <%= f.select("instructor_id", Instructor.all.collect {|i| [ i.name, i.id ] }) %>
+    <br /><br />
+     
+    
+    <%= f.submit (@user.new_record? ? "Register" : "Complete my reservation"), class: 'btn btn-success' %>
+  <% end %>
+ 
+  </div>
+</div>

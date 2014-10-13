@@ -1,0 +1,14 @@
+ <table>
+ <tbody>
+    <% @slots.each do |s| %>
+      <tr>
+        <td><%= s.description %></td>
+        <td><%= s.list_order %></td>
+        <td><%= s.assigned %></td>
+        <td><%= link_to 'Show', slot %></td>
+        <td><%= link_to 'Edit', edit_slot_path(slot) %></td>
+        <td><%= link_to 'Destroy', slot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

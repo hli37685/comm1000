@@ -1,0 +1,19 @@
+<div class='well'>
+  <%= form_for @slot do |f| %>
+  <%= render 'shared/errors', obj: @slot %>
+    <div class='control-group'>
+      <%= f.label :description, 'Example: (Monday, April 6, 5:00pm)' %>
+      <%= f.text_field :description %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :list_order, 'An integer value to indicate position in the list' %>
+      <%= f.text_field :list_order %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :assigned, 'Number of reservations choosing this slot' %>
+      <%= f.text_field :assigned %>
+    </div>
+     
+    <%= f.submit (@slot.new_record? ? "Add Slot" : "Update Slot"), class: 'btn btn-success' %>
+  <% end %>
+</div>

@@ -1,0 +1,17 @@
+<%= render 'shared/content_title', title: 'Add instructor' %>
+
+<div class='well'>
+  <%= form_for @instructor do |f| %>
+  <%= render 'shared/errors', obj: @instructor %>
+    <div class='control-group'>
+      <%= f.label :name, 'Name (use this format: last, first)'  %>
+      <%= f.text_field :name %>
+    </div>
+    <div class='control-group'>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+     
+    <%= f.submit (@instructor.new_record? ? "Add instructor" : "Update instructor"), class: 'btn btn-success' %>
+  <% end %>
+</div>
