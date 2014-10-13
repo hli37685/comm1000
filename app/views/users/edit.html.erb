@@ -1,12 +1,13 @@
 <%= render 'shared/content_title', title: "Complete Workshop Reservation" %>
 
+
 <div class='well'>
   <%= form_for @user do |f| %>
   <%= render 'shared/errors', obj: @user %>
 
 
 <%=  f.label "Select a Day and Time" %>    
-    <%= f.select("slot_id", Slot.all.collect {|s| [ s.description, s.id ] }) %>
+    <%= f.select("slot_id", slot_assigned_less_than_thirty.collect {|s| [ s.description, s.id ] }) %>
     <br /><br />
 
 <%=  f.label "Select your instructor" %>    
