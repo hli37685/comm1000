@@ -4,16 +4,16 @@
   <%= form_for @user do |f| %>
   <%= render 'shared/errors', obj: @user %>
     <div class='control-group'>
-      <%= f.label :firstname %>
+      <%= f.label :firstname, 'First name' %>
       <%= f.text_field :firstname %>
     </div>
     <div class='control-group'>
-      <%= f.label :lastname %>
+      <%= f.label :lastname, 'Last name' %>
       <%= f.text_field :lastname %>
     </div>
     <div class='control-group'>
       <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.email_field :email %>
     </div>
     <div class='control-group'>
       <%= f.label :password %>

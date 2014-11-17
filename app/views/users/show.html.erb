@@ -1,7 +1,8 @@
-<%= render 'shared/content_title', title:  "Done"  %>
+<%= render 'shared/content_title', title:  "Thanks for reserving a seat at the COMM1000 and COMM1003 Final Exam"  %>
 
 <div class='well'>
- <h3>Thanks for signing up for the COMM1000 Workshop</h3>
- <p>You will receive an email confirmation.</p>
+ 
+ <p>You will receive an email confirmation. <%= link_to "Edit my reservation", edit_user_path(current_user) %> </p>
+        
 </div>
 

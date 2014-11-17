@@ -26,9 +26,9 @@ class UsersController < ApplicationController
 
   def update
   	if @user.update(user_params)
-       Slot.update_slot_row_count(params[:slot_id])
+       current_user.update_slot_row_count(params[:id])
       #binding.pry
-  		flash[:notice] = "Your seat is reserved!"
+  		flash[:notice] = "#{@user.firstname} #{@user.lastname}, your seat is reserved for #{@user.slot.description}."
   		redirect_to user_path(@user)
   	else
   		render :edit
