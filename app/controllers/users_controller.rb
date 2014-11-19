@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
-   before_action :set_user, only: [:show, :edit, :update]
-   before_action :require_same_user, only: [:edit, :update]
+   before_action :set_user, only: [:show, :edit, :update, :show_all]
+   before_action :require_same_user, only: [:edit, :update, :show_all]
 
    def show   	
+   end
+
+   def show_all     
    end
 
   def new
@@ -26,7 +29,7 @@ class UsersController < ApplicationController
 
   def update
   	if @user.update(user_params)
-       current_user.update_slot_row_count(params[:id])
+       current_user.update_slot_assigned_with_count(params[:id])
       #binding.pry
   		flash[:notice] = "#{@user.firstname} #{@user.lastname}, your seat is reserved for #{@user.slot.description}."
   		redirect_to user_path(@user)
