@@ -1,0 +1,86 @@
+<%= render 'shared/content_title', title:  "Students and Day-Time Slots by Instructor"  %>
+<div class="container-fluid">
+<div class='well'>
+
+ <%= @users %>
+
+<% assigned = [] %>
+<% @users.each do |u| %>
+<% assigned << u.slot.assigned %>
+<% end %>
+<%= assigned %>
+
+<hr />
+<% description = [] %>
+<% @users.each do |u| %>
+<% description << u.slot.description %>
+<% end %>
+<%= desc_list = description.to_s.gsub(/"/,"'") %>
+
+
+<% @users.each do |u| %>
+<div class="row">
+	<div class="col-md-2">
+		<%= u.firstname %>
+		<%= u.lastname %>
+	</div>
+
+	<div class="col-md-2">	
+		<%= u.slot.description %>		 
+	</div>	
+
+	<div class="col-md-1">	
+		<%= u.slot.assigned %>		 
+	</div>	
+
+	  <div class="col-md-2">	
+		<%= u.instructor.name %>		 
+	</div>	 
+
+</div>
+<% end %>
+      <hr />
+
+  <% myarray = @users.to_a %>
+  <%# myarray %>    
+  <hr />
+<%= User.short_list %>>
+
+  <hr />
+
+<script type="text/javascript">
+$(function() {
+	$('#chart_container').highcharts({
+		chart: {
+			type: 'bar'
+		},
+		title: {
+			text: "Day-Time Slot Reservation Counts"
+		},
+		xAxis: {
+			categories: ['Monday, April 6, 5:00pm', 'Monday, April 6, 5:30pm', 'Monday, April 6, 6:00pm', 'Monday, April 6, 7:00pm', 'Monday, April 6, 7:30pm', 'Tuesday, April 7, 6:30pm',] // 	//user.slot.description		<%= description.to_s.gsub(/"/,"'") %>   <%= desc_list %>
+		},
+		yAxis: {
+			title: {
+				text: "Number of Reservations"
+			}
+		},
+		series: [{
+			data:  <%= assigned %>//[5,2,2,1,1,1] //user.slot.assigned
+		}]
+	});
+});
+</script>
+  <div id="chart_container" style="width:560px; height:300px;"></div>
+
+
+  <%= link_to 'Download Students and Day-Time Slots by Instructor CSV', users_export_to_csv_path %>  
+
+  
+ 
+</div>
+</div>
+
+
+ 
+

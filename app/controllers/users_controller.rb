@@ -1,12 +1,53 @@
 class UsersController < ApplicationController
    before_action :set_user, only: [:show, :edit, :update, :show_all]
    before_action :require_same_user, only: [:edit, :update, :show_all]
+   before_action :require_admin, only: [:index, :report, :export_to_csv]
+
+  
 
    def show   	
    end
 
    def show_all     
    end
+
+   def query
+    @users = User.where(Hash[*params[:specs].split("/")])
+    #binding.pry
+    if @users.empty?
+      flash[error: "Can't find users with those properties"]      
+     end
+     render :index
+   end
+
+   def report
+     @users = User.all(:order => "instructor_id")
+
+      
+
+    #@users = User.order(lastname: :asc).take(500)
+    #@users = User.find(:all, :order => "lastname, firstname")
+    #@users = User.all(:order => "instructor_id")
+    #@users = User.where(firstname: true)
+    #@users = User.take(500).order(:created_at)  
+
+   end
+
+
+def export_to_csv       
+    @users = User.all(:order => "instructor_id")
+    csv_string = CSV.generate do |csv|
+         csv << ["First Name", "Last Name", "Description","Instructor"]
+         @users.each do |user|
+           csv << [user.firstname, user.lastname, user.slot.description, user.instructor.name]
+         end
+    end         
+  
+   send_data csv_string,
+   :type => 'text/csv; charset=iso-8859-1; header=present',
+   :disposition => "attachment; filename=users.csv" 
+end 
+
 
   def new
   	@user = User.new

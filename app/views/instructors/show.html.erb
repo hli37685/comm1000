@@ -1,16 +1,15 @@
 <div class="container-fluid">
 <div class='nav_item'>
-    <%= link_to 'New Slot', new_slot_path, class: 'btn btn-success btn-small' %>
+    <%= link_to 'New Instructor', new_instructor_path, class: 'btn btn-success btn-small' %>
   </div>
 
-   <h1>Show slot</h1>
+   <h1>Show instructor</h1>
 
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>Description</th>
-      <th>list_order</th>
-      <th>assigned</th>
+      <th>Name</th>
+      <th>Email</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -18,11 +17,10 @@
   <tbody>
      
       <tr>
-        <td><%= @slot.description %></td>
-        <td><%= @slot.list_order %></td>
-        <td><%= @slot.assigned %></td>
+        <td><%= @instructor.name %></td>
+        <td><%= @instructor.email %></td>
         <td><%# link_to 'Edit', edit_slot_path(@slot) %>
-          <%= link_to edit_slot_path(@slot) do %>
+          <%= link_to edit_instructor_path(@instructor) do %>
               Edit <i class='icon-pencil'></i>
            <% end %>
         </td>         
@@ -31,6 +29,3 @@
   </tbody>
 </table>
 </div>
- 
-
- 

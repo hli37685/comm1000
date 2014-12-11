@@ -1,0 +1,18 @@
+<div class="container-fluid">
+<div class='well'>
+  <%= form_for @instructor do |f| %>
+  <%= render 'shared/errors', obj: @instructor %>
+    <div class='control-group'>
+      <%= f.label :name, 'Example: Smith, Joe' %><br>
+      <%= f.text_field :name %>
+    </div>
+    <br>
+    <div class='control-group'>
+      <%= f.label :email, 'Auburn email address' %><br>
+      <%= f.text_field :email %>
+    </div>
+     <br><br>
+    <%= f.submit (@instructor.new_record? ? "Add instructor" : "Update instructor"), class: 'btn btn-success' %>
+  <% end %>
+</div>
+</div>

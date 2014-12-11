@@ -1,14 +1,14 @@
 class SlotsController < ApplicationController
 	before_action :set_user, only: [:index, :show, :edit, :update]
 	before_action :require_same_user, only: [:index, :show, :edit, :update]
-	before_action :require_admin, only: [:new, :create, :show, :edit, :update]
+	before_action :require_admin, only: [:index, :new, :create, :show, :edit, :update]
 
 	def index		 
 	    @slots = Slot.all
 	end
 
 	def show
-	 @slots = Slot.all		
+	 @slot = Slot.find(params[:id])
 	end
 
 	def new
@@ -26,12 +26,15 @@ class SlotsController < ApplicationController
 		end
 	end
 
-	def edit;
+	def edit
+		@slot = Slot.find(params[:id])
     end
 
 	def update
+		#binding.pry
+		@slot = Slot.find(params[:id])
 	  	if @slot.update(slot_params)
-	      #binding.pry
+	      
 	  		flash[:notice] = "This slot is updated."
 	  		redirect_to slot_path(@slot)
 	  	else

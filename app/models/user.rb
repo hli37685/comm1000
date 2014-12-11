@@ -10,6 +10,10 @@ has_secure_password validations: false
 validates :email, presence: true, uniqueness: true
 validates :password, presence: true, on: :create, length: {minimum: 5}
 
+
+ scope :short_list, -> { where(firstname: 'Sam') }
+
+
 def update_slot_assigned_with_count(param)
   u = User.find(param)
   user_count = User.connection.select_all("SELECT * FROM users WHERE slot_id = #{u.slot_id}").count

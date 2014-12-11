@@ -1,0 +1,32 @@
+<%= render 'shared/content_title', title:  "Report Page"  %>
+<div class="container-fluid">
+<div class='well'>
+
+ <%# @users %>
+
+<h3>Students and DayTime Slots by Instructor</h3>
+<% @users.each do |u| %>
+<div class="row">
+	<div class="col-md-2">
+		<%= u.firstname %>
+		<%= u.lastname %>
+	</div>
+
+	<div class="col-md-2">	
+		<%= u.email %>		 
+	</div>	
+
+	  <div class="col-md-2">	
+		<%= u.id %>		 
+	</div>	 
+
+</div>
+<% end %>
+      <hr />
+
+ 
+  
+
+
+</div>
+</div>

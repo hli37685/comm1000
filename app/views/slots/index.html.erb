@@ -1,14 +1,34 @@
- <table>
- <tbody>
-    <% @slots.each do |s| %>
+<div class="container-fluid">
+<div class='nav_item'>
+    <%= link_to 'New Slot', new_slot_path, class: 'btn btn-success btn-small' %>
+  </div>
+
+   <h1>Listing slots</h1>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>list_order</th>
+      <th>assigned</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @slots.each do |slot| %>
       <tr>
-        <td><%= s.description %></td>
-        <td><%= s.list_order %></td>
-        <td><%= s.assigned %></td>
-        <td><%= link_to 'Show', slot %></td>
+        <td><%= slot.description %></td>
+        <td><%= slot.list_order %></td>
+        <td><%= slot.assigned %></td>
         <td><%= link_to 'Edit', edit_slot_path(slot) %></td>
-        <td><%= link_to 'Destroy', slot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<br>
+
+<%= link_to 'New Slot', new_slot_path %>
+</div>

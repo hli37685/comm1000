@@ -1,19 +1,23 @@
+<div class="container-fluid">
 <div class='well'>
   <%= form_for @slot do |f| %>
   <%= render 'shared/errors', obj: @slot %>
     <div class='control-group'>
-      <%= f.label :description, 'Example: (Monday, April 6, 5:00pm)' %>
-      <%= f.text_field :description %>
+      <%= f.label :description, 'Example: (Monday, April 6, 5:00pm)' %><br>
+      <%= f.text_field :description, :size => 40 %>
     </div>
+    <br>
     <div class='control-group'>
-      <%= f.label :list_order, 'An integer value to indicate position in the list' %>
-      <%= f.text_field :list_order %>
+      <%= f.label :list_order, 'An integer value to indicate position in the list' %><br>
+      <%= f.text_field :list_order, :size => 3 %>
     </div>
+     <br>
     <div class='control-group'>
-      <%= f.label :assigned, 'Number of reservations choosing this slot' %>
-      <%= f.text_field :assigned %>
+      <%= f.label :assigned, 'Number of reservations choosing this slot' %><br>
+      <%= f.text_field :assigned, :size => 3 %>
     </div>
-     
+     <br><br>
     <%= f.submit (@slot.new_record? ? "Add Slot" : "Update Slot"), class: 'btn btn-success' %>
   <% end %>
+</div>
 </div>

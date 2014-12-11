@@ -1,9 +1,14 @@
 class InstructorsController < ApplicationController
-	before_action :set_user, only: [:show, :edit, :update]
-	before_action :require_same_user, only: [:edit, :update]
-	before_action :require_admin, only: [:new, :create, :show, :edit, :update]
+	before_action :set_user, only: [:show, :edit, :update, :index]
+	before_action :require_same_user, only: [:edit, :update, :index]
+	before_action :require_admin, only: [:new, :create, :show, :edit, :update, :index]
 
-	def show		
+	def index		 
+	    @instructors = Instructor.all
+	end
+
+	def show
+	 @instructor = Instructor.find(params[:id])
 	end
 
 	def new
@@ -21,16 +26,20 @@ class InstructorsController < ApplicationController
 		end
 	end
 
-	def edit;
-  	end
+	def edit
+		@instructor = Instructor.find(params[:id])
+    end
 
 	def update
+		#binding.pry
+		@instructor = Instructor.find(params[:id])
 	  	if @instructor.update(instructor_params)
-	  		flash[:notice] = "Instructor profile is updated!"
+	      
+	  		flash[:notice] = "This instructor has been updated."
 	  		redirect_to instructor_path(@instructor)
 	  	else
 	  		render :edit
-		end
+	  	end
 	end
 
 	private
@@ -40,7 +49,7 @@ class InstructorsController < ApplicationController
 	end
 
 	def set_user
-  		@user = user.find_by id: params[:id]
+  		@user = User.find_by id: params[:id]
   	end
 
 	def require_same_user

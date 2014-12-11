@@ -1,0 +1,32 @@
+Adamson, Sarah Anne saa0025@tigermail.auburn.edu
+Aikens, Candace cea0013@auburn.edu
+Cantrell, Elizabeth ejc0009@auburn.edu
+Crawford, Ariel arc0041@auburn.edu
+Gilbert, Sherrie sag0004@auburn.edu 
+Hillyer, Josh hillyjd@auburn.edu
+Johnson, Jennifer mcculj1@auburn.edu
+Kilpatrick, Mitchell mwk0001@auburn.edu
+Knight, Terri trk0001@auburn.edu
+Marsh, Shaquille no email address
+Robuck, Lauren robucle@auburn.edu
+Ryan, Whitney wer0006@auburn.edu
+Seifried, Jonathan  no email address
+Walden, Jeremy jsw0007@auburn.edu
+
+
+
+iterate through all rows of slots table
+for each slots.id
+find collection of all matching slot_ids
+get the row count of each collection
+update the slots.assigned field with the count
+
+
+Slots.all.collect do |s|
+
+	user_count = User.connection.select_all("SELECT * FROM users WHERE slot_id = #{s}").count
+	  slot = Slot.find(s)
+	  slot.assigned = user_count
+	  slot.save
+
+end

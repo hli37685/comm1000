@@ -1,23 +1,27 @@
 <%= render 'shared/content_title', title: 'Register' %>
 
+<div class="container-fluid">
 <div class='well'>
   <%= form_for @user do |f| %>
   <%= render 'shared/errors', obj: @user %>
     <div class='control-group'>
-      <%= f.label :firstname, 'First name' %>
+      <%= f.label :firstname, 'First name' %><br>
       <%= f.text_field :firstname %>
     </div>
+    <br>
     <div class='control-group'>
-      <%= f.label :lastname, 'Last name' %>
+      <%= f.label :lastname, 'Last name' %><br>
       <%= f.text_field :lastname %>
     </div>
+    <br>
     <div class='control-group'>
-      <%= f.label :email %>
+      <%= f.label :email %><br> 
       <%= f.email_field :email %>
     </div>
+    <br>
     <div class='control-group'>
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.label :password %><br>
+      <%= f.password_field :password %><br><br>
     </div>
     <%= f.submit (@user.new_record? ? "Register" : "Update Profile"), class: 'btn btn-success' %>
   <% end %>
@@ -25,6 +29,7 @@
            
           login
         <% end %>
+</div>
 </div>
 
 
