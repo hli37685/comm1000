@@ -83,7 +83,7 @@ end
   private
 
   def user_params
-  		params.require(:user).permit(:firstname, :lastname, :email, :password, :instructor_id, :slot_id)
+  		params.require(:user).permit(:role, :firstname, :lastname, :email, :password, :instructor_id, :slot_id)
   	end
 
   	def set_user
