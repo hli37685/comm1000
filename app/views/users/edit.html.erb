@@ -14,10 +14,16 @@
     <%= f.select("instructor_id", Instructor.all.collect {|i| [ i.name, i.id ] }) %>
     <br /><br />
      
+    <%  if logged_in? and current_user.admin? %>       
      <div class='control-group'>
-      <%= f.label :role, 'Example: admin' %><br>
+      <%= f.label :role, 'Role' %><br>
       <%= f.text_field :role %>
-    </div>
+     </div>
+     <div class='control-group'>
+      <%= f.label :email %><br> 
+      <%= f.email_field :email %>
+     </div>
+    <% end %>
     
     <%= f.submit (@user.new_record? ? "Register" : "Complete my reservation"), class: 'btn btn-success' %>
   <% end %>

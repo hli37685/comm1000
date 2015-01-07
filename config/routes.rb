@@ -10,9 +10,10 @@ PostitTemplate::Application.routes.draw do
 
   get 'users/q/*specs', controller: "users", action: "query"
 
-  get 'users/export_to_csv', to: 'users#export_to_csv'
+  get '/users/export_to_csv', to: 'users#export_to_csv'
+  get '/users/index', to: 'users#index'
 
-  resources :users, only: [:new, :create, :edit, :update, :show, :show_all]
+  resources :users, only: [:index, :new, :create, :edit, :update, :show, :show_all, :welcome]
   resources :slots, only: [:index, :show, :new, :create, :edit, :update]
   resources :instructors, only: [:index, :show, :new, :create, :edit, :update]
   
