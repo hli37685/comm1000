@@ -42,9 +42,9 @@ class UsersController < ApplicationController
 def export_to_csv       
     @users = User.all(:order => "instructor_id")
     csv_string = CSV.generate do |csv|
-         csv << ["First Name", "Last Name", "Description","Instructor"]
+         csv << ["First Name", "Last Name", "Email", "Description","Instructor"]
          @users.each do |user|
-           csv << [user.firstname, user.lastname, user.slot.description, user.instructor.name]
+           csv << [user.firstname, user.lastname, user.email,  user.slot.description, user.instructor.name]
          end
     end         
   
