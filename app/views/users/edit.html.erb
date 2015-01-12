@@ -11,7 +11,7 @@
     <br /><br />
 
 <%=  f.label "Select your instructor" %>    
-    <%= f.select("instructor_id", Instructor.all.collect {|i| [ i.name, i.id ] }) %>
+    <%= f.select("instructor_id", Instructor.all(:order => "name").collect   {|i| [ i.name, i.id ] }) %>
     <br /><br />
      
     <%  if logged_in? and current_user.admin? %>       
