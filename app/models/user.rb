@@ -8,8 +8,8 @@ belongs_to :instructor
 has_secure_password validations: false
 
 # validates :email, presence: true, uniqueness: true
-validates_length_of :email, :minimum => 7, :maximum => 7, :allow_blank => false, on: :create 
-validates :password, presence: true, on: :create, length: {minimum: 5}
+validates_length_of :email, :minimum => 7, :maximum => 7, :allow_blank => false, on: :create, :message => "is not requested.  Instead enter you Auburn UserID." 
+validates :password, presence: true, on: :create, length: {minimum: 8}
 
 
  scope :short_list, -> { where(firstname: 'Sam') }

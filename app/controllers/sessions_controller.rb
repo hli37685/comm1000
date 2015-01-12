@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "Welcome, you've logged in."
       redirect_to  edit_user_path(user.id)
     else
-      flash[:error] = "I can't authenticate with this email and password."
+      flash[:error] = "I can't authenticate with this Auburn UserID and password."
       redirect_to login_path
     end
   end
